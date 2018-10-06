@@ -1,1 +1,3 @@
 # jtemporal
+
+see README.txt
