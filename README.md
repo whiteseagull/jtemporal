@@ -15,3 +15,6 @@ Some functionalities are inspired by those provided by the temporal databases [2
 [2] TSQL Temporal Query Language, Workshop on Temporal Databases Zürich 1995, TSQL2 and SQL3
 
 [3] Richard T. Snodgrass, Developing Time-Oriented Database Applications in SQL, Morgan Kaufmann, 2000. Downloadable from his home page. 
+
+
+Content taken from: http://jtemporal.sourceforge.net/
