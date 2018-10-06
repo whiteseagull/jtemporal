@@ -1,0 +1,122 @@
+===================================================
+ JTemporal 0.80 Release Notes
+===================================================
+- Generics completed 
+- Deprecated TreeTemporalSet, 
+  use new TemporalSetImpl(new CompactTemporalSetStorage)) instead
+- TemporalSetStorage interface :
+  CloseableIterator<TimedObject> entryIterator(Period period, T value);
+  becomes :
+  CloseableIterator<Period> periodIterator(Period period, T value);
+  
+===================================================
+ JTemporal 0.72 Release Notes
+===================================================
+- TimeObject class becomes an interface, previous
+  class becomes AbstractTimedObject
+- ORMTemporalAttributeStorage has more generics
+
+===================================================
+ JTemporal 0.71 Release Notes
+===================================================
+- going from Alpha to Beta
+- REQUIRES JDK 1.5
+- First pass of generics, added to the root package, 
+  but not to the spi package yet. 
+- when something null is passed as a parameter and 
+  it should not be null, an IllegalArgumentException is thrown
+  
+===================================================
+ JTemporal 0.60 Release Notes
+===================================================
+- changed interface LazyTemporalAttributeStorage.MissingRangeHandler
+- class TemporalAttributeStorageReplicator renamed 
+  to TemporalAttributeStorageProxy
+- LazyTemporalAttributeStorage complete
+===================================================
+ JTemporal 0.59e Release Notes 
+===================================================
+- optimisation in TemporalAttributeImpl.put :
+  when the appropriate value already exists in the storage,
+  nothing is done in the storage
+ 
+===================================================
+ JTemporal 0.59b Release Notes 
+===================================================
+- NullPointerException fix in LazyTemporalAttributeStorage.putInCache
+
+===================================================
+ JTemporal 0.59 Release Notes (changes since 0.58)
+===================================================
+- more toString()
+- Fixed bug in TemporalAttributeImpl, who was sometimes writing twice
+the same record into the storage.
+- TimedObject has been split in:
+  - TimedObject (abstract class)
+  - SimpleTimedObject (extends TimedObject)
+- new class ORMTemporalAttributeStorage, to be used by ORM tools
+- new class LazyTemporalAttributeStorage, for incremental lazy loading
+- new methods in Period class
+- new method getStorage() in TemporalAttributeImpl
+- plus other minor changes
+
+===================================================
+ JTemporal 0.58 Release Notes (changes since 0.57)
+===================================================
+- LRUCache renamed to LightLRUCache.
+- LightLRUCache accepts loadFactor parameter, for fine tuning.
+- Updated FinalDate (in demosrc) to show instance caching.
+- net.sf.jtemporal.spi.TreeTemporalAttributeStorage$StartComparator has been 
+moved to a new Class StartComparator.
+- Some new low-level utilities in the util package.
+- TemporalSetImpl implements TemporalSet and uses TemporalSetStorage.
+- CompactTemporalSetStorage implements TemporalSetStorage: some methods 
+return UnsupportedOperationException, they will be implemented soon.
+- Some perf tuning in TemporalAttributeStorage.getPeriod(Instant)
+- new class CompactPeriodStorage
+
+===================================================
+ JTemporal 0.57 Release Notes (changes since 0.53)
+===================================================
+
+Please read the changes below, since the semantics of some methods have changed.
+
+
+Instant interface 
+=================
+Method related to the infinte have changed.
+This interface should be definitive now.
+
+
+Infinite handling in the Period class
+=====================================
+If the end instant is the positive infinity, the positive infinity is 
+contained by the period.
+This apparently breaks the rule that end instants are not included, 
+but in practice, given that infinity-1=infinity this is OK.
+This is necessary to be able to define positively open ended periods.
+
+
+Defragmentation
+===============
+When you put into a TemporalAttribute two attributes that are equal 
+(by the equals() method) and the periods are contiguous (meets(Period)),
+then they are automatically MERGED.
+This is currently available for the TemporalAttribute only.
+
+
+Persistence
+===========
+You can now implement a persistent TemporalAttribute in two ways:
+1- By implementing TemporalAttributeStorage.  This is a lot of work,
+but you have full freedom for perf. tuning.
+2- If you have an O/R mapping tool, by passing a persistent SortedMap
+implementation to the TreeTemporalAttributeStorage constructor.
+
+This is currently available for TemporalAttribute only, and not for 
+TemporalSet yet.
+
+
+CachedTimeSeries
+================
+Tuned for performance

@@ -1,0 +1,125 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /* This file is part of the JTemporal framework (http://jtemporal.sf.net).<a name="line.1"></a>
+<FONT color="green">002</FONT>       Copyright (C) 2002 by the author(s).<a name="line.2"></a>
+<FONT color="green">003</FONT>       Distributable under LGPL license version 2.1 or later, <a name="line.3"></a>
+<FONT color="green">004</FONT>       with NO WARRANTIES given or implied.<a name="line.4"></a>
+<FONT color="green">005</FONT>       See terms of license at gnu.org or www.opensource.org/licenses  */<a name="line.5"></a>
+<FONT color="green">006</FONT>    <a name="line.6"></a>
+<FONT color="green">007</FONT>    package net.sf.jtemporal;<a name="line.7"></a>
+<FONT color="green">008</FONT>    <a name="line.8"></a>
+<FONT color="green">009</FONT>    import java.util.Set;<a name="line.9"></a>
+<FONT color="green">010</FONT>    import java.util.Iterator;<a name="line.10"></a>
+<FONT color="green">011</FONT>    <a name="line.11"></a>
+<FONT color="green">012</FONT>    /**<a name="line.12"></a>
+<FONT color="green">013</FONT>     * Features common to the MultiMaps.<a name="line.13"></a>
+<FONT color="green">014</FONT>     * @author Thomas A Beck<a name="line.14"></a>
+<FONT color="green">015</FONT>     * @version $Id: AbstractTemporalSet.java,v 1.1 2004/05/02 21:40:30 tabeck Exp $<a name="line.15"></a>
+<FONT color="green">016</FONT>     */<a name="line.16"></a>
+<FONT color="green">017</FONT>    abstract public class AbstractTemporalSet implements TemporalSet {<a name="line.17"></a>
+<FONT color="green">018</FONT>    <a name="line.18"></a>
+<FONT color="green">019</FONT>      abstract public void clear();<a name="line.19"></a>
+<FONT color="green">020</FONT>      abstract public int size(Object value);<a name="line.20"></a>
+<FONT color="green">021</FONT>      abstract public boolean isEmpty();<a name="line.21"></a>
+<FONT color="green">022</FONT>      abstract public Set valueSet(Instant instant);<a name="line.22"></a>
+<FONT color="green">023</FONT>      abstract public Set valueSet();<a name="line.23"></a>
+<FONT color="green">024</FONT>      abstract public Period getPeriod(Instant instant, Object value);<a name="line.24"></a>
+<FONT color="green">025</FONT>      abstract public boolean contains(Instant instant, Object value);<a name="line.25"></a>
+<FONT color="green">026</FONT>      abstract public boolean containsValue(Object value);<a name="line.26"></a>
+<FONT color="green">027</FONT>      abstract public boolean put(Period p, Object value);<a name="line.27"></a>
+<FONT color="green">028</FONT>      abstract public boolean remove(Period p, Object value);<a name="line.28"></a>
+<FONT color="green">029</FONT>      abstract public void removeValue(Object value);<a name="line.29"></a>
+<FONT color="green">030</FONT>      abstract public boolean removePeriod(Period p);<a name="line.30"></a>
+<FONT color="green">031</FONT>      abstract public Set periodSet(Object value);<a name="line.31"></a>
+<FONT color="green">032</FONT>      abstract public Instant firstInstant(Object value);<a name="line.32"></a>
+<FONT color="green">033</FONT>      abstract public Instant lastInstant(Object value);<a name="line.33"></a>
+<FONT color="green">034</FONT>      abstract public Period firstPeriod(Object value);<a name="line.34"></a>
+<FONT color="green">035</FONT>      abstract public Period lastPeriod(Object value);<a name="line.35"></a>
+<FONT color="green">036</FONT>      //abstract public TemporalSet subMap(Period p);<a name="line.36"></a>
+<FONT color="green">037</FONT>    <a name="line.37"></a>
+<FONT color="green">038</FONT>      public Period extent(Object value) {<a name="line.38"></a>
+<FONT color="green">039</FONT>        return new Period(this.firstInstant(value), this.lastInstant(value));<a name="line.39"></a>
+<FONT color="green">040</FONT>      }<a name="line.40"></a>
+<FONT color="green">041</FONT>    <a name="line.41"></a>
+<FONT color="green">042</FONT>      public boolean equals(Object o) {<a name="line.42"></a>
+<FONT color="green">043</FONT>        throw new UnsupportedOperationException();<a name="line.43"></a>
+<FONT color="green">044</FONT>      }<a name="line.44"></a>
+<FONT color="green">045</FONT>    <a name="line.45"></a>
+<FONT color="green">046</FONT>      public boolean putAll(TemporalSet mtm) {<a name="line.46"></a>
+<FONT color="green">047</FONT>        if (mtm == null) throw new NullPointerException();<a name="line.47"></a>
+<FONT color="green">048</FONT>        boolean ret = false;<a name="line.48"></a>
+<FONT color="green">049</FONT>        for (Iterator v = mtm.valueSet().iterator(); v.hasNext(); ) {<a name="line.49"></a>
+<FONT color="green">050</FONT>          Object value = v.next();<a name="line.50"></a>
+<FONT color="green">051</FONT>          for (Iterator p = mtm.periodSet(value).iterator(); p.hasNext(); ) {<a name="line.51"></a>
+<FONT color="green">052</FONT>            Period period = (Period) p.next();<a name="line.52"></a>
+<FONT color="green">053</FONT>            ret |= this.put(period, value) ;<a name="line.53"></a>
+<FONT color="green">054</FONT>          }<a name="line.54"></a>
+<FONT color="green">055</FONT>        }<a name="line.55"></a>
+<FONT color="green">056</FONT>        return ret;<a name="line.56"></a>
+<FONT color="green">057</FONT>      }<a name="line.57"></a>
+<FONT color="green">058</FONT>    <a name="line.58"></a>
+<FONT color="green">059</FONT>    }<a name="line.59"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

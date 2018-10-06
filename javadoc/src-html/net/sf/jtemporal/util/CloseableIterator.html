@@ -1,0 +1,99 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>       This file is part of the JTemporal framework (http://jtemporal.sf.net).<a name="line.2"></a>
+<FONT color="green">003</FONT>       Copyright (C) 2002 by the author(s).<a name="line.3"></a>
+<FONT color="green">004</FONT>       Distributable under LGPL license version 2.1 or later, <a name="line.4"></a>
+<FONT color="green">005</FONT>       with no warranties given or implied.<a name="line.5"></a>
+<FONT color="green">006</FONT>       See terms of license at gnu.org or www.opensource.org/licenses  */<a name="line.6"></a>
+<FONT color="green">007</FONT>    <a name="line.7"></a>
+<FONT color="green">008</FONT>    package net.sf.jtemporal.util;<a name="line.8"></a>
+<FONT color="green">009</FONT>    <a name="line.9"></a>
+<FONT color="green">010</FONT>    import java.util.Iterator;<a name="line.10"></a>
+<FONT color="green">011</FONT>    <a name="line.11"></a>
+<FONT color="green">012</FONT>    /**<a name="line.12"></a>
+<FONT color="green">013</FONT>     * An iterator the should be closed as soon it is not used anymore. &lt;br><a name="line.13"></a>
+<FONT color="green">014</FONT>     * This is useful to avoid waiting the garbage collection to free resources, <a name="line.14"></a>
+<FONT color="green">015</FONT>     * such as database resources.<a name="line.15"></a>
+<FONT color="green">016</FONT>     * @author Thomas A Beck<a name="line.16"></a>
+<FONT color="green">017</FONT>     * @version $Id: CloseableIterator.java,v 1.1 2004/11/01 11:37:48 tabeck Exp $<a name="line.17"></a>
+<FONT color="green">018</FONT>     */<a name="line.18"></a>
+<FONT color="green">019</FONT>    public interface CloseableIterator extends Iterator {<a name="line.19"></a>
+<FONT color="green">020</FONT>            <a name="line.20"></a>
+<FONT color="green">021</FONT>            /**<a name="line.21"></a>
+<FONT color="green">022</FONT>             * Closes the iterator. &lt;br><a name="line.22"></a>
+<FONT color="green">023</FONT>             * Once this method has been called, the iterator becomes unusable. &lt;br><a name="line.23"></a>
+<FONT color="green">024</FONT>             * If the cursor is already closed, this method just returns.<a name="line.24"></a>
+<FONT color="green">025</FONT>             */<a name="line.25"></a>
+<FONT color="green">026</FONT>            void    close();<a name="line.26"></a>
+<FONT color="green">027</FONT>            <a name="line.27"></a>
+<FONT color="green">028</FONT>            /**<a name="line.28"></a>
+<FONT color="green">029</FONT>             * Checks whether the iterator is open, or already closed.<a name="line.29"></a>
+<FONT color="green">030</FONT>             * @return &lt;code>true&lt;/code> if the cursor is open.<a name="line.30"></a>
+<FONT color="green">031</FONT>             */     <a name="line.31"></a>
+<FONT color="green">032</FONT>            boolean isOpen();<a name="line.32"></a>
+<FONT color="green">033</FONT>    }<a name="line.33"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

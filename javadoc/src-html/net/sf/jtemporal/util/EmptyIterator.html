@@ -1,0 +1,116 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /* This file is part of the JTemporal framework (http://jtemporal.sf.net).<a name="line.1"></a>
+<FONT color="green">002</FONT>       Copyright (C) 2002 by the author(s).<a name="line.2"></a>
+<FONT color="green">003</FONT>       Distributable under LGPL license version 2.1 or later, <a name="line.3"></a>
+<FONT color="green">004</FONT>       with NO WARRANTIES given or implied.<a name="line.4"></a>
+<FONT color="green">005</FONT>       See terms of license at gnu.org or www.opensource.org/licenses  */<a name="line.5"></a>
+<FONT color="green">006</FONT>    <a name="line.6"></a>
+<FONT color="green">007</FONT>    package net.sf.jtemporal.util;<a name="line.7"></a>
+<FONT color="green">008</FONT>    <a name="line.8"></a>
+<FONT color="green">009</FONT>    import java.util.Iterator;<a name="line.9"></a>
+<FONT color="green">010</FONT>    import java.util.NoSuchElementException;<a name="line.10"></a>
+<FONT color="green">011</FONT>    import java.io.InvalidObjectException;<a name="line.11"></a>
+<FONT color="green">012</FONT>    import java.io.Serializable;<a name="line.12"></a>
+<FONT color="green">013</FONT>    <a name="line.13"></a>
+<FONT color="green">014</FONT>    <a name="line.14"></a>
+<FONT color="green">015</FONT>    /**<a name="line.15"></a>
+<FONT color="green">016</FONT>     * Immutable empty read-only iterator (singleton).  &lt;BR><a name="line.16"></a>
+<FONT color="green">017</FONT>     * &lt;B>For methods description, see java.util.Iterator&lt;/B><a name="line.17"></a>
+<FONT color="green">018</FONT>     * @author Thomas Beck<a name="line.18"></a>
+<FONT color="green">019</FONT>     * @version $Id: EmptyIterator.java,v 1.1 2003/11/16 18:07:01 tabeck Exp $<a name="line.19"></a>
+<FONT color="green">020</FONT>     */<a name="line.20"></a>
+<FONT color="green">021</FONT>    <a name="line.21"></a>
+<FONT color="green">022</FONT>    public class EmptyIterator implements Serializable, Iterator {<a name="line.22"></a>
+<FONT color="green">023</FONT>    <a name="line.23"></a>
+<FONT color="green">024</FONT>      private static final EmptyIterator INSTANCE = new EmptyIterator();<a name="line.24"></a>
+<FONT color="green">025</FONT>      private static final long serialVersionUID = 9365825104636L;<a name="line.25"></a>
+<FONT color="green">026</FONT>    <a name="line.26"></a>
+<FONT color="green">027</FONT>      static public EmptyIterator getInstance() {<a name="line.27"></a>
+<FONT color="green">028</FONT>        return INSTANCE;<a name="line.28"></a>
+<FONT color="green">029</FONT>      }<a name="line.29"></a>
+<FONT color="green">030</FONT>    <a name="line.30"></a>
+<FONT color="green">031</FONT>      private EmptyIterator() {<a name="line.31"></a>
+<FONT color="green">032</FONT>      }<a name="line.32"></a>
+<FONT color="green">033</FONT>    <a name="line.33"></a>
+<FONT color="green">034</FONT>      /**<a name="line.34"></a>
+<FONT color="green">035</FONT>       * Resolves instances being deserialized to the predefined unique instance.<a name="line.35"></a>
+<FONT color="green">036</FONT>       */<a name="line.36"></a>
+<FONT color="green">037</FONT>      private Object readResolve() throws InvalidObjectException {<a name="line.37"></a>
+<FONT color="green">038</FONT>        return INSTANCE;<a name="line.38"></a>
+<FONT color="green">039</FONT>      }<a name="line.39"></a>
+<FONT color="green">040</FONT>    <a name="line.40"></a>
+<FONT color="green">041</FONT>      public boolean hasNext() {<a name="line.41"></a>
+<FONT color="green">042</FONT>        return false;<a name="line.42"></a>
+<FONT color="green">043</FONT>      }<a name="line.43"></a>
+<FONT color="green">044</FONT>      public Object next() {<a name="line.44"></a>
+<FONT color="green">045</FONT>        throw new NoSuchElementException();<a name="line.45"></a>
+<FONT color="green">046</FONT>      }<a name="line.46"></a>
+<FONT color="green">047</FONT>      public void remove() {<a name="line.47"></a>
+<FONT color="green">048</FONT>        throw new java.lang.UnsupportedOperationException();<a name="line.48"></a>
+<FONT color="green">049</FONT>      }<a name="line.49"></a>
+<FONT color="green">050</FONT>    }<a name="line.50"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>
